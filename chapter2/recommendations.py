@@ -70,6 +70,15 @@ def sim_pearson(prefs,p1,p2):
 
   return r
 
+def sim_tanimoto(prefs,p1,p2):#tanimoto相似度
+  si={}
+  for item in prefs[p1]:
+    if item in prefs[p2]:
+      si[item]=1
+  n=len(si)
+  if n==0: return 1
+  return n/(len(prefs[p1])+len(prefs[p2])-n)
+
 # Returns the best matches for person from the prefs dictionary. 
 # Number of results and similarity function are optional params.
 def topMatches(prefs,person,n=5,similarity=sim_pearson):
